@@ -42,6 +42,7 @@ class restore_hsuforum_activity_structure_step extends restore_activity_structur
             $paths[] = new restore_path_element('hsuforum_discussion', '/activity/hsuforum/discussions/discussion');
             $paths[] = new restore_path_element('hsuforum_discussion_subscription', '/activity/hsuforum/discussions/discussion/subscriptions_discs/subscriptions_disc');
             $paths[] = new restore_path_element('hsuforum_post', '/activity/hsuforum/discussions/discussion/posts/post');
+            $paths[] = new restore_path_element('hsuforum_tag', '/activity/hsuforum/poststags/tag');
             $paths[] = new restore_path_element('hsuforum_rating', '/activity/hsuforum/discussions/discussion/posts/post/ratings/rating');
             $paths[] = new restore_path_element('hsuforum_subscription', '/activity/hsuforum/subscriptions/subscription');
             $paths[] = new restore_path_element('hsuforum_digest', '/activity/hsuforum/digests/digest');
@@ -123,7 +124,7 @@ class restore_hsuforum_activity_structure_step extends restore_activity_structur
 
         $data = (object)$data;
         $oldid = $data->id;
-
+        $olduserid = $data->userid;
         $data->discussion = $this->get_new_parentid('hsuforum_discussion');
         $data->created = $this->apply_date_offset($data->created);
         $data->modified = $this->apply_date_offset($data->modified);
@@ -140,6 +141,24 @@ class restore_hsuforum_activity_structure_step extends restore_activity_structur
         if (empty($data->parent)) {
             $DB->set_field('hsuforum_discussions', 'firstpost', $newitemid, array('id' => $data->discussion));
         }
+        $this->set_mapping(restore_gradingform_plugin::itemid_mapping('posts'), $olduserid, $data->userid);
+    }
+
+    protected function process_hsuforum_tag($data) {
+        $data = (object)$data;
+
+        if (!core_tag_tag::is_enabled('mod_hsuforum', 'forum_posts')) { // Tags disabled in server, nothing to process.
+            return;
+        }
+
+        $tag = $data->rawname;
+        if (!$itemid = $this->get_mappingid('hsuforum_post', $data->itemid)) {
+            // Some orphaned tag, we could not find the restored post for it - ignore.
+            return;
+        }
+
+        $context = context_module::instance($this->task->get_moduleid());
+        core_tag_tag::add_item_tag('mod_hsuforum', 'forum_posts', $itemid, $context, $tag);
     }
 
     protected function process_hsuforum_rating($data) {
@@ -238,6 +257,7 @@ class restore_hsuforum_activity_structure_step extends restore_activity_structur
         // information as base for the initial post.
         $forumid = $this->task->get_activityid();
         $forumrec = $DB->get_record('hsuforum', array('id' => $forumid));
+        
         if ($forumrec->type == 'single' && !$DB->record_exists('hsuforum_discussions', array('forum' => $forumid))) {
             // Create single discussion/lead post from forum data
             $sd = new stdClass();
