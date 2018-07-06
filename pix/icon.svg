@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"><g fill="#fff" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10"><path d="m2.6 23.7v46.9c0 5.8 4.4 10.6 9.8 10.6h3.5l9.3 14.3c.8.8 2 .8 2.8 0l9.3-14.3h49.3c5.4 0 9.8-4.7 9.8-10.6v-46.9c0-5.9-4.4-10.7-9.8-10.7h-74.4c-5.4 0-9.8 4.8-9.6 10.7z" stroke="#999" stroke-width="3"/><path d="m30.8 47.8h38.4m-38.4-15.6h38.4m-38.4 31.6h38.4" stroke="#4caf50" stroke-width="5"/></g></svg>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="16.000000pt" height="16.000000pt" viewBox="0 0 16.000000 16.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,16.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M0 80 l0 -80 80 0 80 0 0 80 0 80 -80 0 -80 0 0 -80z m140 43 c0 -5
+-27 -8 -60 -8 -33 0 -60 3 -60 8 0 4 27 7 60 7 33 0 60 -3 60 -7z"/>
+</g>
+</svg>
