@@ -292,15 +292,15 @@ $string['messageinboundfilesizeexceeded'] = 'Unable to post your reply, since th
 $string['messageinboundforumhidden'] = 'Unable to post your reply, since the forum is currently unavailable.';
 $string['messageinboundnopostforum'] = 'Unable to post your reply, since you do not have permission to post in the {$a->forum->name} forum.';
 $string['messageinboundthresholdhit'] = 'Unable to post your reply.  You have exceeded the posting threshold set for this forum';
-$string['messageprovider:digests'] = 'Subscribed Moodlerooms forum digests';
-$string['messageprovider:posts'] = 'Subscribed Moodlerooms forum posts';
+$string['messageprovider:digests'] = 'Subscribed advanced forum digests';
+$string['messageprovider:posts'] = 'Subscribed advanced forum posts';
 $string['missingsearchterms'] = 'The following search terms occur only in the HTML markup of this message:';
 $string['modeflatnewestfirst'] = 'Display replies flat, with newest first';
 $string['modeflatoldestfirst'] = 'Display replies flat, with oldest first';
 $string['modenested'] = 'Display replies in nested form';
 $string['modethreaded'] = 'Display replies in threaded form';
-$string['modulename'] = 'Moodlerooms Forum';
-$string['modulename_help'] = 'The Moodlerooms Forum activity module enables participants to have asynchronous discussions,
+$string['modulename'] = 'Advanced Forum';
+$string['modulename_help'] = 'The Advanced Forum activity module enables participants to have asynchronous discussions,
 i.e., discussions that take place over an extended period of time.
 
 There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students\' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.
@@ -320,15 +320,15 @@ Forums have many uses, such as:
 * A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)
 * For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions';
 $string['modulename_link'] = 'mod/hsuforum/view';
-$string['modulenameplural'] = 'Moodlerooms Forums';
+$string['modulenameplural'] = 'Advanced Forums';
 $string['more'] = 'more';
 $string['movedmarker'] = '(Moved)';
 $string['movethisdiscussionto'] = 'Move this discussion to ...';
 $string['mustprovidediscussionorpost'] = 'You must provide either a discussion id or post id to export';
-$string['myprofileownpost'] = 'My Moodlerooms Forum posts';
-$string['myprofileowndis'] = 'My Moodlerooms Forum discussions';
-$string['myprofileotherpost'] = 'Moodlerooms Forum posts';
-$string['myprofileotherdis'] = 'Moodlerooms Forum discussions';
+$string['myprofileownpost'] = 'My Advanced Forum posts';
+$string['myprofileowndis'] = 'My Advanced Forum discussions';
+$string['myprofileotherpost'] = 'Advanced Forum posts';
+$string['myprofileotherdis'] = 'Advanced Forum discussions';
 $string['namenews'] = 'Announcements';
 $string['namenews_help'] = 'The course announcements forum is a special forum for announcements and is automatically created when a course is created. A course can have only one announcements forum. Only teachers and administrators can post announcements. The "Latest announcements" block will display recent announcements.';
 $string['namesocial'] = 'Social forum';
@@ -377,7 +377,7 @@ $string['page-mod-hsuforum-discuss'] = 'Forum module discussion thread page';
 $string['parent'] = 'Show parent';
 $string['parentofthispost'] = 'Parent of this post';
 $string['pluginadministration'] = 'Forum administration';
-$string['pluginname'] = 'Moodlerooms Forum';
+$string['pluginname'] = 'Advanced Forum';
 $string['postadded'] = '<p>Your post was successfully added.</p> <p>You have {$a} to edit it if you want to make any changes.</p>';
 $string['postaddedsuccess'] = 'Your post was successfully added.';
 $string['postaddedtimeleft'] = 'You have {$a} to edit it if you want to make any changes.';
@@ -407,8 +407,8 @@ $string['previousdiscussion'] = 'Older discussion';
 $string['privacy:digesttypepreference'] = 'You have chosen to receive the following forum digest type: "{$a->type}".';
 $string['privacy:discussionsubscriptionpreference'] = 'You have chosen the following discussion subscription preference for this forum: "{$a->preference}"';
 
-$string['privacy:metadata:hsuforum_digests'] = 'Information about the digest preferences for each Moodlerooms forum.';
-$string['privacy:metadata:hsuforum_digests:hsuforum'] = 'The Moodlerooms forum subscribed to.';
+$string['privacy:metadata:hsuforum_digests'] = 'Information about the digest preferences for each advanced forum.';
+$string['privacy:metadata:hsuforum_digests:hsuforum'] = 'The advanced forum subscribed to.';
 $string['privacy:metadata:hsuforum_digests:maildigest'] = 'The digest preference.';
 $string['privacy:metadata:hsuforum_digests:userid'] = 'The ID of the user with the digest preference.';
 
@@ -430,14 +430,14 @@ $string['privacy:metadata:hsuforum_posts:discussion'] = 'The discussion that the
 $string['privacy:metadata:hsuforum_posts:parent'] = 'The parent post that was replied to.';
 $string['privacy:metadata:hsuforum_posts:created'] = 'The time that the post was created.';
 $string['privacy:metadata:hsuforum_posts:modified'] = 'The time that the post was last modified.';
-$string['privacy:metadata:hsuforum_posts:subject'] = 'The subject of the Moodlerooms forum post.';
-$string['privacy:metadata:hsuforum_posts:message'] = 'The message of the Moodlerooms forum post.';
-$string['privacy:metadata:hsuforum_posts:userid'] = 'The ID of the user who authored the Moodlerooms forum post.';
-$string['privacy:metadata:hsuforum_posts'] = 'Information about the digest preferences for each Moodlerooms forum.';
+$string['privacy:metadata:hsuforum_posts:subject'] = 'The subject of the advanced forum post.';
+$string['privacy:metadata:hsuforum_posts:message'] = 'The message of the advanced forum post.';
+$string['privacy:metadata:hsuforum_posts:userid'] = 'The ID of the user who authored the advanced forum post.';
+$string['privacy:metadata:hsuforum_posts'] = 'Information about the digest preferences for each advanced forum.';
 
 $string['privacy:metadata:hsuforum_subscriptions_disc:discussion'] = 'The ID of the discussion that was subscribed to.';
 $string['privacy:metadata:hsuforum_subscriptions_disc:userid'] = 'The ID of the user with the discussion subscription.';
-$string['privacy:metadata:hsuforum_subscriptions_disc'] = 'Information about the subscriptions to individual Moodlerooms forum discussions.';
+$string['privacy:metadata:hsuforum_subscriptions_disc'] = 'Information about the subscriptions to individual advanced forum discussions.';
 
 $string['privacy:metadata:hsuforum_read:userid'] = 'The ID of the user that this record relates to.';
 $string['privacy:metadata:hsuforum_read:discussionid'] = 'The discussion that the post is in.';
@@ -446,16 +446,16 @@ $string['privacy:metadata:hsuforum_read:firstread'] = 'The first time that the p
 $string['privacy:metadata:hsuforum_read:lastread'] = 'The most recent time that the post was read.';
 $string['privacy:metadata:hsuforum_read'] = 'Information about which posts have been read by the user.';
 
-$string['privacy:metadata:hsuforum_subscriptions:userid'] = 'The ID of the user that this Moodlerooms forum subscription relates to.';
+$string['privacy:metadata:hsuforum_subscriptions:userid'] = 'The ID of the user that this advanced forum subscription relates to.';
 $string['privacy:metadata:hsuforum_subscriptions:forum'] = 'The forum that was subscribed to.';
-$string['privacy:metadata:hsuforum_subscriptions'] = 'Information about which Moodlerooms forums the user has subscribed to.';
+$string['privacy:metadata:hsuforum_subscriptions'] = 'Information about which advanced forums the user has subscribed to.';
 
-$string['privacy:metadata:hsuforum_track_prefs:userid'] = 'The ID of the user that this Moodlerooms forum tracking preference relates to.';
-$string['privacy:metadata:hsuforum_track_prefs:forumid'] = 'The Moodlerooms forum that has read tracking enabled.';
+$string['privacy:metadata:hsuforum_track_prefs:userid'] = 'The ID of the user that this advanced forum tracking preference relates to.';
+$string['privacy:metadata:hsuforum_track_prefs:forumid'] = 'The advanced forum that has read tracking enabled.';
 $string['privacy:metadata:hsuforum_track_prefs'] = 'Information about which forums the user has chosen to track post reads for.';
 
-$string['privacy:metadata:core_tag'] = 'The Moodlerooms forum makes use of the tag subsystem to support tagging of posts.';
-$string['privacy:metadata:core_rating'] = 'The Moodlerooms forum makes use of the rating subsystem to support the rating of posts.';
+$string['privacy:metadata:core_tag'] = 'The advanced forum makes use of the tag subsystem to support tagging of posts.';
+$string['privacy:metadata:core_rating'] = 'The advanced forum makes use of the rating subsystem to support the rating of posts.';
 
 
 $string['privacy:metadata:preference:autosubscribe'] = 'Whether to subscribe to discussions when replying to posts within them.';
@@ -487,8 +487,8 @@ $string['reply'] = 'Reply';
 $string['replyforum'] = 'Reply to forum';
 $string['replytopostbyemail'] = 'You can reply to this via email.';
 $string['replytouser'] = 'Use email address in reply';
-$string['reply_handler'] = 'Reply to Moodlerooms forum posts via email';
-$string['reply_handler_name'] = 'Reply to Moodlerooms forum posts';
+$string['reply_handler'] = 'Reply to advanced forum posts via email';
+$string['reply_handler_name'] = 'Reply to advanced forum posts';
 $string['resetforums'] = 'Delete posts from';
 $string['resetforumsall'] = 'Delete all posts';
 $string['resetdigests'] = 'Delete all per-user forum digest preferences';
@@ -502,8 +502,8 @@ $string['rsstype'] = 'RSS feed for this activity';
 $string['rsstype_help'] = 'To enable the RSS feed for this activity, select either discussions or posts to be included in the feed.';
 $string['rsstypedefault'] = 'RSS feed type';
 $string['search'] = 'Search';
-$string['search:post'] = 'Moodlerooms Forum - posts';
-$string['search:activity'] = 'Moodlerooms Forum - activity information';
+$string['search:post'] = 'Advanced Forum - posts';
+$string['search:activity'] = 'Advanced Forum - activity information';
 $string['searchdatefrom'] = 'Posts must be newer than this';
 $string['searchdateto'] = 'Posts must be older than this';
 $string['searchforumintro'] = 'Please enter search terms into one or more of the following fields:';
