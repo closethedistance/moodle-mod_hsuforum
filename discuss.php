@@ -21,12 +21,11 @@
  * @package   mod_hsuforum
  * @copyright 1999 onwards Martin Dougiamas  {@link http://moodle.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright Copyright (c) 2012 Moodlerooms Inc. (http://www.moodlerooms.com)
+ * @copyright Copyright (c) 2012 Blackboard Inc. (http://www.blackboard.com)
  * @author Mark Nielsen
  */
 
     use mod_hsuforum\local;
-    use mod_hsuforum\renderables\discussion_dateform;
     use mod_hsuforum\renderables\advanced_editor;
 
     require_once('../../config.php');
@@ -195,7 +194,7 @@
         print_error("notexists", 'hsuforum', "$CFG->wwwroot/mod/hsuforum/view.php?f=$forum->id");
     }
 
-    if (!hsuforum_user_can_see_post($forum, $discussion, $post, null, $cm)) {
+    if (!hsuforum_user_can_see_post($forum, $discussion, $post, null, $cm, false)) {
         print_error('noviewdiscussionspermission', 'hsuforum', "$CFG->wwwroot/mod/hsuforum/view.php?id=$forum->id");
     }
 
@@ -224,8 +223,6 @@
     $PAGE->set_title("$course->shortname: $discussion->name");
     $PAGE->set_heading($course->fullname);
     echo $OUTPUT->header();
-
-    echo $renderer->render(new discussion_dateform($modcontext, $discussion));
 
     if ($forum->type != 'single') {
          echo "<h2><a href='$CFG->wwwroot/mod/hsuforum/view.php?f=$forum->id'>&#171; ".format_string($forum->name)."</a></h2>";
@@ -260,7 +257,8 @@
     }
 
     if (hsuforum_discussion_is_locked($forum, $discussion)) {
-        echo html_writer::div(get_string('discussionlocked', 'hsuforum'), 'discussionlocked');
+        echo $OUTPUT->notification(get_string('discussionlocked', 'hsuforum'),
+            \core\output\notification::NOTIFY_INFO . ' discussionlocked');
     }
 
     if (!empty($forum->blockafter) && !empty($forum->blockperiod)) {

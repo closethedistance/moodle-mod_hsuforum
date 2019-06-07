@@ -19,11 +19,10 @@
  * @package   mod_hsuforum
  * @copyright 1999 onwards Martin Dougiamas  {@link http://moodle.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright Copyright (c) 2012 Moodlerooms Inc. (http://www.moodlerooms.com)
+ * @copyright Copyright (c) 2012 Blackboard Inc. (http://www.blackboard.com)
  * @author Mark Nielsen
  */
 
-    use mod_hsuforum\renderables\discussion_dateform;
     use mod_hsuforum\renderables\advanced_editor;
 
     require_once('../../config.php');
@@ -92,7 +91,6 @@
     $discussionview = $renderer->render_discussionsview($forum);
 
     echo $OUTPUT->header();
-    echo $renderer->render(new discussion_dateform($context));
 
     echo ('<div id="discussionsview">');
 

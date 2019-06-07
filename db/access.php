@@ -20,7 +20,7 @@
  * @package    mod_hsuforum
  * @copyright  2006 Martin Dougiamas
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright Copyright (c) 2012 Moodlerooms Inc. (http://www.moodlerooms.com)
+ * @copyright Copyright (c) 2012 Blackboard Inc. (http://www.blackboard.com)
  * @author Mark Nielsen
  */
 
@@ -183,7 +183,7 @@ $capabilities = array(
 
     'mod/hsuforum:deleteownpost' => array(
 
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => array(
             'student' => CAP_ALLOW,
@@ -195,7 +195,7 @@ $capabilities = array(
 
     'mod/hsuforum:deleteanypost' => array(
 
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => array(
             'teacher' => CAP_ALLOW,
@@ -206,7 +206,7 @@ $capabilities = array(
 
     'mod/hsuforum:splitdiscussions' => array(
 
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => array(
             'teacher' => CAP_ALLOW,
@@ -217,7 +217,7 @@ $capabilities = array(
 
     'mod/hsuforum:movediscussions' => array(
 
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => array(
             'teacher' => CAP_ALLOW,
@@ -288,7 +288,7 @@ $capabilities = array(
 
         'riskbitmask' => RISK_SPAM,
 
-        'captype' => 'read',
+        'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'archetypes' => array(
             'teacher' => CAP_ALLOW,

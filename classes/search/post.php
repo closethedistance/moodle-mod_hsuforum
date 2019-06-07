@@ -68,7 +68,7 @@ class post extends \core_search\base_mod {
             return null;
         }
 
-        $sql = "SELECT fp.*, f.id AS forumid, f.course AS courseid
+        $sql = "SELECT fp.*, f.id AS forumid, f.course AS courseid, fd.groupid AS groupid
                   FROM {hsuforum_posts} fp
                   JOIN {hsuforum_discussions} fd ON fd.id = fp.discussion
                   JOIN {hsuforum} f ON f.id = fd.forum
@@ -112,6 +112,11 @@ class post extends \core_search\base_mod {
         $doc->set('owneruserid', \core_search\manager::NO_OWNER_ID);
         $doc->set('modified', $record->modified);
 
+        // Store group id if there is one. (0 and -1 both mean not restricted to group.)
+        if ($record->groupid > 0) {
+            $doc->set('groupid', $record->groupid);
+        }
+
         // Check if this document should be considered new.
         if (isset($options['lastindexedtime']) && ($options['lastindexedtime'] < $record->created)) {
             // If the document was created after the last index time, it must be new.
@@ -128,6 +133,21 @@ class post extends \core_search\base_mod {
      */
     public function uses_file_indexing() {
         return true;
+    }
+
+    /**
+     * Return the context info required to index files for
+     * this search area.
+     *
+     * @return array
+     */
+    public function get_search_fileareas() {
+        $fileareas = array(
+            'attachment',
+            'post'
+        );
+
+        return $fileareas;
     }
 
     /**
@@ -152,14 +172,21 @@ class post extends \core_search\base_mod {
         // Because this is used during indexing, we don't want to cache posts. Would result in memory leak.
         unset($this->postsdata[$postid]);
 
-        $cm = $this->get_cm('hsuforum', $post->forum, $document->get('courseid'));
+        $cm = $this->get_cm($this->get_module_name(), $post->forum, $document->get('courseid'));
         $context = \context_module::instance($cm->id);
+        $contextid = $context->id;
+
+        $fileareas = $this->get_search_fileareas();
+        $component = $this->get_component_name();
 
         // Get the files and attach them.
-        $fs = get_file_storage();
-        $files = $fs->get_area_files($context->id, 'mod_hsuforum', 'attachment', $postid, "filename", false);
-        foreach ($files as $file) {
-            $document->add_stored_file($file);
+        foreach ($fileareas as $filearea) {
+            $fs = get_file_storage();
+            $files = $fs->get_area_files($contextid, $component, $filearea, $postid, '', false);
+
+            foreach ($files as $file) {
+                $document->add_stored_file($file);
+            }
         }
     }
 
@@ -277,5 +304,27 @@ class post extends \core_search\base_mod {
                 array('id' => $discussionid), '*', MUST_EXIST);
         }
         return $this->discussionsdata[$discussionid];
+    }
+
+    /**
+     * Changes the context ordering so that the forums with most recent discussions are indexed
+     * first.
+     *
+     * @return string[] SQL join and ORDER BY
+     */
+    protected function get_contexts_to_reindex_extra_sql() {
+        return [
+            'JOIN {hsuforum_discussions} fd ON fd.course = cm.course AND fd.forum = cm.instance',
+            'MAX(fd.timemodified) DESC'
+        ];
+    }
+
+    /**
+     * Confirms that data entries support group restrictions.
+     *
+     * @return bool True
+     */
+    public function supports_group_restriction() {
+        return true;
     }
 }

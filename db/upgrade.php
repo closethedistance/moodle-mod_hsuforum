@@ -38,7 +38,7 @@
  * @package   mod_hsuforum
  * @copyright 2003 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright Copyright (c) 2012 Moodlerooms Inc. (http://www.moodlerooms.com)
+ * @copyright Copyright (c) 2012 Blackboard Inc. (http://www.blackboard.com)
  * @author Mark Nielsen
  */
 
@@ -290,7 +290,7 @@ function xmldb_hsuforum_upgrade($oldversion) {
             false // Don't update if local setting already exists.
         );
 
-        // Moodlerooms Forum savepoint reached.
+        // Open Forum savepoint reached.
         upgrade_mod_savepoint(true, 2017120802, 'hsuforum');
     }
 
@@ -308,6 +308,27 @@ function xmldb_hsuforum_upgrade($oldversion) {
         // Hsuforum savepoint reached.
         upgrade_mod_savepoint(true, 2017120803, 'hsuforum');
     }
+
+    if ($oldversion < 2017120804) {
+
+        // Define field deleted to be added to hsuforum_posts.
+        $table = new xmldb_table('hsuforum_posts');
+        $field = new xmldb_field('deleted', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0', 'privatereply');
+
+        // Conditionally launch add field deleted.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Open Forum savepoint reached.
+        upgrade_mod_savepoint(true, 2017120804, 'hsuforum');
+    }
+
+    // Automatically generated Moodle v3.5.0 release upgrade line.
+    // Put any upgrade step following this.
+
+    // Automatically generated Moodle v3.6.0 release upgrade line.
+    // Put any upgrade step following this.
 
     return true;
 }
