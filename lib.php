@@ -8220,7 +8220,7 @@ function mod_hsuforum_comment_permissions(stdClass $options) {
         throw new comment_exception('invalidcontext');
     }
 
-    if (!has_capability('local/joulegrader:grade', $context)) {
+    if (!has_capability('local/cugrader:grade', $context)) {
         if (!has_capability('mod/hsuforum:replypost', $context) or ($user->id != $USER->id)) {
             return array('view' => false, 'post' => false);
         }
@@ -8276,7 +8276,7 @@ function hsuforum_forum_comments_pluginfile($course, $cm, $context, $filearea, $
     }
 
     // Check permissions.
-    if (!has_capability('local/joulegrader:grade', $context)) {
+    if (!has_capability('local/cugrader:grade', $context)) {
         if (!has_capability('mod/hsuforum:replypost', $context) or ($comment->itemid != $USER->id)) {
             return false;
         }
@@ -8308,7 +8308,7 @@ function mod_hsuforum_comment_message(stdClass $comment, stdClass $options) {
     }
 
     // Get all the users with the ability to rate.
-    $recipients = get_users_by_capability($context, 'local/joulegrader:grade');
+    $recipients = get_users_by_capability($context, 'local/cugrader:grade');
 
     // Add the item user if they are different from commenter.
     if ($comment->userid != $user->id and has_capability('mod/hsuforum:replypost', $context, $user)) {
@@ -8321,10 +8321,10 @@ function mod_hsuforum_comment_message(stdClass $comment, stdClass $options) {
     // Make sure that the commenter is not getting the message.
     unset($recipients[$comment->userid]);
 
-    if (\core_component::get_plugin_directory('local', 'joulegrader') !== null) {
+    if (\core_component::get_plugin_directory('local', 'cugrader') !== null) {
         // Joule Grader is installed and control panel enabled.
-        $gareaid = component_callback('local_joulegrader', 'area_from_context', array($context, 'hsuforum'));
-        $contexturl = new moodle_url('/local/joulegrader/view.php', array('courseid' => $cm->course,
+        $gareaid = component_callback('local_cugrader', 'area_from_context', array($context, 'hsuforum'));
+        $contexturl = new moodle_url('/local/cugrader/view.php', array('courseid' => $cm->course,
                 'garea' => $gareaid, 'guser' => $user->id));
     } else {
         $contexturl = $context->get_url();
