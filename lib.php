@@ -8499,6 +8499,7 @@ function hsuforum_relative_time($timeinpast, $attributes = null) {
         if ($secondsago != 0) {
             $displaytime = get_string('ago', 'message', $displaytime);
         }
+        $displaytime = $displaytime . ' (' . $precisedatetime . ')';
     }
 
     // Override default attributes with those passed in (if any).
