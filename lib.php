@@ -8196,7 +8196,7 @@ function mod_hsuforum_comment_validate(stdClass $options) {
         throw new comment_exception('invalidcontext');
     }
 
-    if (!has_capability('local/joulegrader:grade', $context)) {
+    if (!has_capability('local/cugrader:grade', $context)) {
         if (!has_capability('mod/hsuforum:replypost', $context) or ($user->id != $USER->id)) {
             throw new comment_exception('nopermissiontocomment');
         }
